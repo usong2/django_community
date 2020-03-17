@@ -5,6 +5,10 @@ from .forms import BoardForm
 
 # Create your views here.
 
+def board_detail(request, pk):
+    board = Board.objects.get(pk=pk)
+    return render(request, 'board_detail.html', {'board': board})
+
 def board_write(request):
     if request.method == 'POST':    
         form = BoardForm(request.POST)
